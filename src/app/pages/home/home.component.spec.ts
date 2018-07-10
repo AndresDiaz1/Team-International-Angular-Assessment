@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomeComponent } from './home.component';
 import {EmployeesService} from '../../services/employees.service';
@@ -18,6 +18,8 @@ class MockEmployeesService {
 describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
+  let injector: TestBed;
+  let employeesService: MockEmployeesService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -26,6 +28,8 @@ describe('HomeComponent', () => {
       providers: [{provide: EmployeesService, useClass: MockEmployeesService}]
     })
     .compileComponents();
+    injector = getTestBed();
+    employeesService = injector.get(EmployeesService);
   }));
 
   beforeEach(() => {
@@ -36,5 +40,11 @@ describe('HomeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('getEmployees should call getEmployees from EmployeesService', () => {
+    spyOn(employeesService, 'getEmployees').and.callThrough();
+    component.getEmployees();
+    expect(employeesService.getEmployees).toHaveBeenCalled();
   });
 });
