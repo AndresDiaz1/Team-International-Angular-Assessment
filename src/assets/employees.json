@@ -1,0 +1,52 @@
+{
+  "employees":[
+    {
+      "id": 1,
+      "name": "Giacomo Guilizoni",
+      "dob": "1978/03/21",
+      "country": "Italy",
+      "username": "Peldi",
+      "hireDate": "2017/10/01",
+      "status": false,
+      "area": "services",
+      "jobTitle": 1,
+      "tipRate": 0
+    },
+    {
+      "id": 2,
+      "name": "Marco Botton",
+      "dob": "1980/01/06",
+      "country": "Canada",
+      "username": "Marcoplo",
+      "hireDate": "2001/01/10",
+      "status": false,
+      "area": "kitchen",
+      "jobTitle": 2,
+      "tipRate": 0.4
+    },
+    {
+      "id": 3,
+      "name": "Maria Maclachland",
+      "dob": "1977/05/26",
+      "country": "Scotland",
+      "username": "Patata",
+      "hireDate": "2016/02/01",
+      "status": false,
+      "area": "kitchen",
+      "jobTitle": 3,
+      "tipRate": 0.4
+    },
+    {
+      "id": 4,
+      "name": "Valerie Liberty",
+      "dob": "1988/03/02",
+      "country": "Australia",
+      "username": "Val",
+      "hireDate": "2018/03/02",
+      "status": false,
+      "area": "services",
+      "jobTitle": 3,
+      "tipRate": 0.4
+    }
+  ]
+}
