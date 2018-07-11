@@ -8,7 +8,18 @@ export interface EmployeeState {
 }
 
 export const initialState: EmployeeState = {
-  data: [],
+  data: [{
+      'id': 1,
+      'name': 'Giacomo Guilizoni',
+      'dob': '1978/03/21',
+      'country': 'Italy',
+      'username': 'Peldi',
+      'hireDate': '2017/10/01',
+      'status': false,
+      'area': 'services',
+      'jobTitle': 1,
+      'tipRate': 0
+    }],
   loaded: false,
   loading: false
 };
@@ -43,3 +54,8 @@ export function reducer(state = initialState, action: fromEmployees.EmpployeeAct
 
   return state;
 }
+
+export const getEmployeesLoading = (state: EmployeeState) => state.loading;
+export const getEmployeesLoaed = (state: EmployeeState) => state.loaded;
+export const getEmployees = (state: EmployeeState) => state.data;
+

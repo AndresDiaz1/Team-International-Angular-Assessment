@@ -22,7 +22,7 @@ import { reducers } from './store';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    StoreModule.forFeature('employees', reducers)
+    StoreModule.forRoot(reducers)
   ],
   providers: [EmployeesService, CalculateAgeService],
   bootstrap: [AppComponent],
