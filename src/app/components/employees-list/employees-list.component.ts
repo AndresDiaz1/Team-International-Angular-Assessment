@@ -26,7 +26,6 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
   }
 
   createTable() {
-    console.log('lo que llega', this.employeesList)
     this.tbDataSource = new MatTableDataSource(this.employeesList['employees']);
     this.tbDataSource.sort = this.sort;
   }

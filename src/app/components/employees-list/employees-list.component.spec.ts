@@ -25,4 +25,9 @@ describe('EmployeesListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should setAge call calculateAge of CalculateAgeService', () => {
+    expect(component.setAge('1978/03/21')).toEqual(40);
+  });
+
 });
