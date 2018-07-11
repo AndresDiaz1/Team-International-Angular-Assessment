@@ -9,7 +9,8 @@ import { EmployeesListComponent } from './components/employees-list/employees-li
 import {MaterialModule} from './material/material.module';
 import {CalculateAgeService} from './miscellaneous/calculate-age.service';
 import { StoreModule} from '@ngrx/store';
-import { reducers } from './store';
+import { EffectsModule} from '@ngrx/effects';
+import { reducers, effects } from './store';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { reducers } from './store';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    StoreModule.forRoot(reducers)
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot(effects)
   ],
   providers: [EmployeesService, CalculateAgeService],
   bootstrap: [AppComponent],
