@@ -26,6 +26,10 @@ class MockStore {
       new Response(new ResponseOptions({body: JSON.stringify({})}))
     );
   }
+
+  dispatch() {
+    return false;
+  }
 }
 
 describe('HomeComponent', () => {
