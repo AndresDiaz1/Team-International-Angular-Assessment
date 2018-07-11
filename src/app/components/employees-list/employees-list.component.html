@@ -14,16 +14,30 @@
       <mat-table [dataSource]="tbDataSource" matSort>
 
         <ng-container matColumnDef="name">
-          <mat-header-cell *matHeaderCellDef mat-sort-header="name"><label class="font-weight-bold">Name</label> <br> <label class="font-weight-bold">(job Title)</label></mat-header-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header><label class="font-weight-bold">Name</label> <br> <label class="font-weight-bold">(job Title)</label></mat-header-cell>
           <mat-cell *matCellDef="let row">
             <p>{{row.name}}</p>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="age">
-          <mat-header-cell *matHeaderCellDef mat-sort-header="age"><label class="font-weight-bold">Age</label></mat-header-cell>
+          <mat-header-cell *matHeaderCellDef mat-sort-header><label class="font-weight-bold">Age</label></mat-header-cell>
           <mat-cell *matCellDef="let row">
             <p>{{setAge(row.dob)}}</p>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="username">
+          <mat-header-cell *matHeaderCellDef mat-sort-header><label class="font-weight-bold">Username</label></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <p>{{row.username}}</p>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="hireDate">
+          <mat-header-cell *matHeaderCellDef mat-sort-header><label class="font-weight-bold">Hire Date</label></mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <p>{{row.hireDate}}</p>
           </mat-cell>
         </ng-container>
 

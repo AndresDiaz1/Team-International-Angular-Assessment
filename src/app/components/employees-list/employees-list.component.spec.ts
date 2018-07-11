@@ -30,4 +30,35 @@ describe('EmployeesListComponent', () => {
     expect(component.setAge('1978/03/21')).toEqual(40);
   });
 
+  it('should adjustTableData method add Age field to employees data', () => {
+    component.employeesList = [
+        {
+          'id': 1,
+          'name': 'Giacomo Guilizoni',
+          'dob': '1978/03/21',
+          'country': 'Italy',
+          'username': 'Peldi',
+          'hireDate': '2017/10/01',
+          'status': false,
+          'area': 'services',
+          'jobTitle': 1,
+          'tipRate': 0
+        }
+      ];
+
+    expect(component.adjustTableData()).toEqual([{
+      'id': 1,
+      'name': 'Giacomo Guilizoni',
+      'dob': '1978/03/21',
+      'country': 'Italy',
+      'username': 'Peldi',
+      'hireDate': '2017/10/01',
+      'status': false,
+      'area': 'services',
+      'jobTitle': 1,
+      'tipRate': 0,
+      'age': 40
+    }]);
+  });
+
 });

@@ -11,7 +11,7 @@ import {CalculateAgeService} from '../../miscellaneous/calculate-age.service';
 export class EmployeesListComponent implements OnInit,  OnChanges {
 
   tbDataSource;
-  displayedColumns: string[] = ['name', 'age'];
+  displayedColumns: string[] = ['name', 'age', 'username', 'hireDate'];
   @ViewChild(MatSort) sort: MatSort;
   @Input() employeesList: Employee[];
 
@@ -21,12 +21,20 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
 
   ngOnChanges() {
     if (this.employeesList) {
-      this.createTable();
+      const tableData = this.adjustTableData();
+      this.createTable(tableData);
     }
   }
 
-  createTable() {
-    this.tbDataSource = new MatTableDataSource(this.employeesList['employees']);
+  adjustTableData(): any[] {
+    const tableData = this.employeesList.map((employee) => {
+      return {...employee, age: this.setAge(employee.dob)};
+    });
+    return tableData;
+  }
+
+  createTable(tableData) {
+    this.tbDataSource = new MatTableDataSource(tableData);
     this.tbDataSource.sort = this.sort;
   }
 

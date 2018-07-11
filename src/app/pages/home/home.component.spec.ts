@@ -8,6 +8,7 @@ import 'rxjs/add/observable/of';
 import {EmployeesListComponent} from '../../components/employees-list/employees-list.component';
 import {MaterialModule} from '../../material/material.module';
 import {CalculateAgeService} from '../../miscellaneous/calculate-age.service';
+import { MockComponent } from 'ng2-mock-component';
 
 
 class MockEmployeesService {
@@ -27,7 +28,10 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, MaterialModule],
-      declarations: [ HomeComponent, EmployeesListComponent ],
+      declarations: [
+        HomeComponent,
+        MockComponent({ selector: 'app-employees-list', inputs: ['employeesList'] })
+      ],
       providers: [{provide: EmployeesService, useClass: MockEmployeesService}, CalculateAgeService]
     })
     .compileComponents();

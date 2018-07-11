@@ -19,8 +19,7 @@ export class HomeComponent implements OnInit {
 
   getEmployees() {
     this.employeesService.getEmployees().subscribe(employees => {
-      this.employees = employees;
-      console.log('los empleados', this.employees);
+      this.employees = employees['employees'];
     }, err => {
       console.log('Can not get employees', err);
     });
