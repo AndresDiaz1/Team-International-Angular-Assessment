@@ -8,7 +8,8 @@ import {HttpClientModule} from '@angular/common/http';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import {MaterialModule} from './material/material.module';
 import {CalculateAgeService} from './miscellaneous/calculate-age.service';
-
+import { StoreModule} from '@ngrx/store';
+import { reducers } from './store';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {CalculateAgeService} from './miscellaneous/calculate-age.service';
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
+    StoreModule.forFeature('employees', reducers)
   ],
   providers: [EmployeesService, CalculateAgeService],
   bootstrap: [AppComponent],
