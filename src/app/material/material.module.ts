@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import {
   MatCardModule,
   MatTableModule,
-  MatSortModule
+  MatSortModule, MatPaginatorModule
 } from '@angular/material';
 
 @NgModule({
@@ -14,6 +14,7 @@ import {
     MatIconModule,
     MatTableModule,
     MatSortModule,
+    MatPaginatorModule
   ],
   declarations: [],
   exports: [
@@ -21,7 +22,8 @@ import {
     MatCardModule,
     MatIconModule,
     MatTableModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule
   ],
   providers: []
 })

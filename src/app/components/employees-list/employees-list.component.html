@@ -5,12 +5,12 @@
         <label class="mr-4 font-weight-bold">Employees</label>
         <div class="search">
           <mat-icon>search</mat-icon>
-          <input class="form-control" placeholder="Search Employee" aria-label="Search an employee">
+          <input matInput (keyup)="applyFilter($event.target.value)" class="form-control" placeholder="Search Employee" aria-label="Search an employee">
         </div>
       </div>
     </div>
 
-    <div class="row">
+    <div class="table-container">
       <mat-table [dataSource]="tbDataSource" matSort>
 
         <ng-container matColumnDef="name">
@@ -44,6 +44,7 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
       </mat-table>
+      <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
     </div>
 
   </div>

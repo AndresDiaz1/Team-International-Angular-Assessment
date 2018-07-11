@@ -1,6 +1,6 @@
 import {Component, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {Employee} from '../../models/employee.model';
-import {MatSort, MatTableDataSource} from '@angular/material';
+import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {CalculateAgeService} from '../../miscellaneous/calculate-age.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
   tbDataSource;
   displayedColumns: string[] = ['name', 'age', 'username', 'hireDate'];
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   @Input() employeesList: Employee[];
 
   constructor(private calculateAgeService: CalculateAgeService) { }
@@ -36,9 +37,16 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
   createTable(tableData) {
     this.tbDataSource = new MatTableDataSource(tableData);
     this.tbDataSource.sort = this.sort;
+    this.tbDataSource.paginator = this.paginator;
   }
 
   setAge(dateOfBirth): Number {
     return this.calculateAgeService.calculateAge(dateOfBirth);
+  }
+
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.tbDataSource.filter = filterValue;
   }
 }
