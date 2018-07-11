@@ -6,6 +6,8 @@ import {Observable} from 'rxjs/Observable';
 import {Response, ResponseOptions} from '@angular/http';
 import 'rxjs/add/observable/of';
 import {EmployeesListComponent} from '../../components/employees-list/employees-list.component';
+import {MaterialModule} from '../../material/material.module';
+import {CalculateAgeService} from '../../miscellaneous/calculate-age.service';
 
 
 class MockEmployeesService {
@@ -24,9 +26,9 @@ describe('HomeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [RouterTestingModule],
+      imports: [RouterTestingModule, MaterialModule],
       declarations: [ HomeComponent, EmployeesListComponent ],
-      providers: [{provide: EmployeesService, useClass: MockEmployeesService}]
+      providers: [{provide: EmployeesService, useClass: MockEmployeesService}, CalculateAgeService]
     })
     .compileComponents();
     injector = getTestBed();

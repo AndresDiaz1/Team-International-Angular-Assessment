@@ -3,19 +3,25 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import {
   MatCardModule,
+  MatTableModule,
+  MatSortModule
 } from '@angular/material';
 
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatSortModule,
   ],
   declarations: [],
   exports: [
     BrowserAnimationsModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatSortModule
   ],
   providers: []
 })
