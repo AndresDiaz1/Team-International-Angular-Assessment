@@ -16,8 +16,8 @@ export class HomeComponent implements OnInit {
   constructor(private store: Store<fromStore.EmployeesState>) { }
 
   ngOnInit() {
-    this.getEmployees();
     this.store.dispatch(new fromStore.LoadEmployees);
+    this.getEmployees();
   }
 
   getEmployees() {
