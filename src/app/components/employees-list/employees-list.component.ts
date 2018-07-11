@@ -11,7 +11,7 @@ import {CalculateAgeService} from '../../miscellaneous/calculate-age.service';
 export class EmployeesListComponent implements OnInit,  OnChanges {
 
   tbDataSource;
-  displayedColumns: string[] = ['name', 'age', 'username', 'hireDate'];
+  displayedColumns: string[] = ['name', 'age', 'username', 'hireDate', 'actions'];
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @Input() employeesList: Employee[];
