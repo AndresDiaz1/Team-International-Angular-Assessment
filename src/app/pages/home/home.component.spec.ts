@@ -5,6 +5,7 @@ import {EmployeesService} from '../../services/employees.service';
 import {Observable} from 'rxjs/Observable';
 import {Response, ResponseOptions} from '@angular/http';
 import 'rxjs/add/observable/of';
+import {EmployeesListComponent} from '../../components/employees-list/employees-list.component';
 
 
 class MockEmployeesService {
@@ -24,7 +25,7 @@ describe('HomeComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule],
-      declarations: [ HomeComponent ],
+      declarations: [ HomeComponent, EmployeesListComponent ],
       providers: [{provide: EmployeesService, useClass: MockEmployeesService}]
     })
     .compileComponents();
