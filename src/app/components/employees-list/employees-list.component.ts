@@ -38,6 +38,9 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
     this.tbDataSource = new MatTableDataSource(tableData);
     this.tbDataSource.sort = this.sort;
     this.tbDataSource.paginator = this.paginator;
+    setTimeout(() => {
+      this.applyFilter('');
+    });
   }
 
   setAge(dateOfBirth): Number {

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {EmployeesService} from '../../services/employees.service';
 import {Employee} from '../../models/employee.model';
 import {Store} from '@ngrx/store';
-import {Observable} from 'rxjs/Observable';
 import * as fromStore from '../../store';
 
 @Component({
@@ -21,14 +19,9 @@ export class HomeComponent implements OnInit {
   }
 
   getEmployees() {
-    this.store.select(fromStore.getAllEmployees).subscribe(state => {
-      console.log('este es el state', state);
+    this.store.select(fromStore.getAllEmployees).subscribe(employees => {
+      this.employees = employees;
     });
-    // this.employeesService.getEmployees().subscribe(employees => {
-    //   this.employees = employees['employees'];
-    // }, err => {
-    //   console.log('Can not get employees', err);
-    // });
   }
 
 }
