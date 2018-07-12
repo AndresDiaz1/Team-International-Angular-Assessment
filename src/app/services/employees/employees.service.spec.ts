@@ -41,7 +41,7 @@ describe('EmployeesService', () => {
       expect(employees.length).toBe(1);
       expect(employees).toEqual(dummyEmployees);
     });
-    const req = httpMock.expectOne('../../assets/employees.json');
+    const req = httpMock.expectOne('../../../employees.json');
     expect(req.request.method).toBe('GET');
     req.flush(dummyEmployees);
   });
