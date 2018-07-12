@@ -44,7 +44,7 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
       name: [null, Validators.required],
       dob: [null, Validators.required],
       country: [null, Validators.required],
-      userName: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$')]],
+      userName: [null, [Validators.required, Validators.pattern('^[A-Za-z0-9- ]+$')]],
       hireDate: [null, Validators.required],
       status: [true, Validators.required],
       area: [null, Validators.required],
