@@ -59,6 +59,16 @@ export class EmployeeFormComponent implements OnInit {
     this.form.controls['jobTitle'].setValue(jobTitle);
   }
 
+  setTipRateVisibility() {
+    if (this.form.controls['jobTitle'].value === 'Waitress' || this.form.controls['jobTitle'].value === 'Dining room manager') {
+      this.form.controls['tipRate'].setValue(null);
+      return true;
+    } else {
+      this.form.controls['tipRate'].setValue(0);
+      return false;
+    }
+  }
+
   saveEmployee(post) {
     this.hasPressedSaveEmployee = true;
     console.log('el empleado', post);
