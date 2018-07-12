@@ -19,6 +19,7 @@ export class JobTitleComponent implements OnInit, OnChanges {
   ngOnInit() {}
 
   ngOnChanges() {
+    this.selectedJobTitle = null;
     this.setDropDownOptions();
   }
 

@@ -4,6 +4,7 @@ import {CountryService} from '../../services/country/country.service';
 import {EmployeesService} from '../../services/employees/employees.service';
 import {DatesConverterService} from '../../miscellaneous/dates-converter/dates-converter.service';
 import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
+import {Employee} from '../../models/employee.model';
 
 @Component({
   selector: 'app-employee-form',
@@ -41,7 +42,7 @@ export class EmployeeFormComponent implements OnInit {
       status: [true, Validators.required],
       area: [null, Validators.required],
       jobTitle: [null, Validators.required],
-      tipRate: [null, Validators.required],
+      tipRate: [null],
     });
   }
 
@@ -58,6 +59,7 @@ export class EmployeeFormComponent implements OnInit {
   }
 
   changeArea() {
+    this.form.controls['tipRate'].setValue(null);
     this.currentArea = this.form.controls['area'].value;
   }
 
@@ -67,10 +69,12 @@ export class EmployeeFormComponent implements OnInit {
 
   setTipRateVisibility() {
     if (this.form.controls['jobTitle'].value === 'Waitress' || this.form.controls['jobTitle'].value === 'Dining room manager') {
-      this.form.controls['tipRate'].setValue(null);
+      this.form.controls['tipRate'].setValidators([Validators.required]);
+      this.form.controls['tipRate'].updateValueAndValidity();
       return true;
     } else {
-      this.form.controls['tipRate'].setValue(0);
+      this.form.controls['tipRate'].setValidators([]);
+      this.form.controls['tipRate'].updateValueAndValidity();
       return false;
     }
   }
@@ -81,11 +85,37 @@ export class EmployeeFormComponent implements OnInit {
     return employeeAge < 18;
   }
 
+  isFormValid() {
+    return this.form.valid && !this.isUnder18();
+  }
+
   saveEmployee(post) {
     this.hasPressedSaveEmployee = true;
-    if (this.form.valid && !this.isUnder18()) {
+    if (this.isFormValid()) {
+      const employee = this.prepareEmployeeData(post);
+      console.log('el empleado nuevo es', employee);
       //this.addEmployee();
     }
+  }
+
+  prepareEmployeeData(post): Employee {
+    let tipRate: number;
+    if (post.jobTitle === 'Waitress' || post.jobTitle === 'Dining room manager') {
+      tipRate = post.tipRate;
+    } else {
+      tipRate = 0;
+    }
+    return {
+      name: post.name,
+      dob: this.datesConverterService.formatDate(post.dob),
+      country: post.country,
+      username: post.userName,
+      hireDate: this.datesConverterService.formatDate(post.hireDate),
+      status: post.status,
+      area: post.area,
+      jobTitle: post.jobTitle,
+      tipRate: tipRate
+    };
   }
 
   addEmployee(employee) {

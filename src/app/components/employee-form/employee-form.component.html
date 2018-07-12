@@ -110,7 +110,7 @@
             <label class="mr-1">Tip Rate: </label>
           </div>
           <div class="col-12 col-md-10">
-            <input aria-label="tip rate" class="form-control w-75" [ngClass]="{'error-border-field':isFieldValid('tipRate')}" formControlName="tipRate" placeholder="%0.01">
+            <input type="number" max="1" min="0" step="0.1" aria-label="tip rate" class="form-control w-75" [ngClass]="{'error-border-field':isFieldValid('tipRate')}" formControlName="tipRate" placeholder="%0.01">
             <span *ngIf="form.controls['tipRate'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: job title is required.</span>
           </div>
         </div>
@@ -126,7 +126,7 @@
       </div>
 
       <div class="col-1 offset-2 offset-md-0">
-        <button (click)="saveEmployee(form.value)" class="btn btn-outline-primary">Save</button>
+        <button [disabled]="!isFormValid()" (click)="saveEmployee(form.value)" class="btn btn-outline-primary">Save</button>
       </div>
     </div>
 
