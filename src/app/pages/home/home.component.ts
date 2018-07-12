@@ -3,6 +3,7 @@ import {Employee} from '../../models/employee.model';
 import {Store} from '@ngrx/store';
 import * as fromStore from '../../store';
 import {EmployeesService} from '../../services/employees/employees.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   employees: Employee[];
 
-  constructor(private store: Store<fromStore.EmployeesState>, private employeesService: EmployeesService) { }
+  constructor(private store: Store<fromStore.EmployeesState>, private employeesService: EmployeesService, private router: Router) { }
 
   ngOnInit() {
     this.loadEmployees();
@@ -31,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   handleViewEmployee(employeeId) {
-    const selectedEmployee = this.employees.find( employee => employee.id === employeeId);
+    this.router.navigate(['/someUser', employeeId], { queryParams: { viewmode: true}});
   }
 
   handleDeleteEmployee(employeeId) {

@@ -18,6 +18,7 @@ import { JobTitleComponent } from './components/job-title/job-title.component';
 import {DatesConverterService} from './miscellaneous/dates-converter/dates-converter.service';
 import { NewEmployeeComponent } from './pages/new-employee/new-employee.component';
 import { CandeactivateguardService} from './guards/candeactivateguard.service';
+import { ViewEmployeeComponent } from './pages/view-employee/view-employee.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { CandeactivateguardService} from './guards/candeactivateguard.service';
     EmployeeFormComponent,
     JobTitleComponent,
     NewEmployeeComponent,
+    ViewEmployeeComponent,
   ],
   imports: [
     BrowserModule,
