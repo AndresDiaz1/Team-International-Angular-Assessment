@@ -7,7 +7,7 @@ import {EmployeesService} from './services/employees/employees.service';
 import {HttpClientModule} from '@angular/common/http';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import {MaterialModule} from './material/material.module';
-import {CalculateAgeService} from './miscellaneous/calculate-age.service';
+import {CalculateAgeService} from './miscellaneous/calculate-age/calculate-age.service';
 import { StoreModule} from '@ngrx/store';
 import { EffectsModule} from '@ngrx/effects';
 import { reducers, effects } from './store';
@@ -15,6 +15,7 @@ import { EmployeeFormComponent } from './components/employee-form/employee-form.
 import {ReactiveFormsModule} from '@angular/forms';
 import {CountryService} from './services/country/country.service';
 import { JobTitleComponent } from './components/job-title/job-title.component';
+import {DatesConverterService} from './miscellaneous/dates-converter/dates-converter.service';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,7 @@ import { JobTitleComponent } from './components/job-title/job-title.component';
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects)
   ],
-  providers: [EmployeesService, CalculateAgeService, CountryService],
+  providers: [EmployeesService, CalculateAgeService, CountryService, DatesConverterService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

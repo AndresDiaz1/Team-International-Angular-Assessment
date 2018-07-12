@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CountryService} from '../../services/country/country.service';
 import {EmployeesService} from '../../services/employees/employees.service';
+import {DatesConverterService} from '../../miscellaneous/dates-converter/dates-converter.service';
+import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -16,7 +18,11 @@ export class EmployeeFormComponent implements OnInit {
   countries;
   currentArea: string;
 
-  constructor(private formBuilder: FormBuilder, private countryService: CountryService, private employeesService: EmployeesService) { }
+  constructor(private formBuilder: FormBuilder,
+              private countryService: CountryService,
+              private employeesService: EmployeesService,
+              private datesConverterService: DatesConverterService,
+              private calculateAgeService: CalculateAgeService) { }
 
   ngOnInit() {
     this.currentDate = new Date();
@@ -69,12 +75,15 @@ export class EmployeeFormComponent implements OnInit {
     }
   }
 
+  isUnder18(): boolean {
+    const selectedDob = this.datesConverterService.formatDate(this.form.controls['dob'].value);
+    const employeeAge = this.calculateAgeService.calculateAge(selectedDob);
+    return employeeAge < 18;
+  }
+
   saveEmployee(post) {
     this.hasPressedSaveEmployee = true;
-    console.log('el empleado', post);
-
-    if (this.form.valid) {
-      console.log('el empleado', post);
+    if (this.form.valid && !this.isUnder18()) {
       //this.addEmployee();
     }
   }

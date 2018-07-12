@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { EmployeesListComponent } from './employees-list.component';
 import {MaterialModule} from '../../material/material.module';
-import {CalculateAgeService} from '../../miscellaneous/calculate-age.service';
+import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
 
 describe('EmployeesListComponent', () => {
   let component: EmployeesListComponent;

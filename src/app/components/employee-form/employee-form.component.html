@@ -23,11 +23,12 @@
           </div>
           <div class="col-12 col-md-10">
             <div class="row pl-3">
-              <input [ngClass]="{'error-border-field':isFieldValid('dob')}" class="form-control dob-input" matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob" [max]="currentDate">
+              <input disabled [ngClass]="{'error-border-field':isFieldValid('dob')}" class="form-control dob-input" matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob" [max]="currentDate">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker #picker></mat-datepicker>
+              <mat-datepicker disabled="false" #picker></mat-datepicker>
             </div>
             <span *ngIf="form.controls['dob'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: date of birth is required.</span>
+            <span *ngIf="form.controls['dob'].value && isUnder18()" class="error-span">Error: employee is under 18.</span>
           </div>
         </div>
 
@@ -59,9 +60,9 @@
           </div>
           <div class="col-12 col-md-10">
             <div class="row pl-3">
-              <input class="form-control dob-input" [ngClass]="{'error-border-field':isFieldValid('hireDate')}" matInput [matDatepicker]="picker2" placeholder="Hire date" formControlName="hireDate">
+              <input disabled class="form-control dob-input" [ngClass]="{'error-border-field':isFieldValid('hireDate')}" matInput [matDatepicker]="picker2" placeholder="Hire date" formControlName="hireDate">
               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-              <mat-datepicker #picker2></mat-datepicker>
+              <mat-datepicker disabled="false" #picker2></mat-datepicker>
             </div>
             <span *ngIf="form.controls['hireDate'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: hire date is required.</span>
           </div>

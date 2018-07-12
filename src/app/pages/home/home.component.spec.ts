@@ -7,7 +7,7 @@ import {Response, ResponseOptions} from '@angular/http';
 import 'rxjs/add/observable/of';
 import {EmployeesListComponent} from '../../components/employees-list/employees-list.component';
 import {MaterialModule} from '../../material/material.module';
-import {CalculateAgeService} from '../../miscellaneous/calculate-age.service';
+import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
 import { MockComponent } from 'ng2-mock-component';
 import {StateObservable, Store} from '@ngrx/store';
 

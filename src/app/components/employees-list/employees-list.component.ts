@@ -1,7 +1,7 @@
 import {Component, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
 import {Employee} from '../../models/employee.model';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
-import {CalculateAgeService} from '../../miscellaneous/calculate-age.service';
+import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
 
 @Component({
   selector: 'app-employees-list',
