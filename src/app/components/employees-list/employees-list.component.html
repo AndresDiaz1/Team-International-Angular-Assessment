@@ -1,6 +1,6 @@
 <mat-card class="m-md-3">
   <div>
-    <div class="col-8">
+    <div class="col-8 mb-3">
       <div class="row">
         <label class="mr-4 font-weight-bold">Employees</label>
         <div class="search">
@@ -16,7 +16,10 @@
         <ng-container matColumnDef="name">
           <mat-header-cell *matHeaderCellDef mat-sort-header><label class="font-weight-bold">Name</label> <br> <label class="font-weight-bold">(job Title)</label></mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <p>{{row.name}}</p>
+            <div class="col-12 p-0">
+              <p class="font-weight-bold">{{row.name}}</p>
+              <p>{{row.jobTitle}}</p>
+            </div>
           </mat-cell>
         </ng-container>
 
