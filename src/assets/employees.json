@@ -8,8 +8,8 @@
       "username": "Peldi",
       "hireDate": "2017/10/01",
       "status": false,
-      "area": "Services",
-      "jobTitle": "Manager",
+      "area": "Kitchen",
+      "jobTitle": "Cook",
       "tipRate": 0
     },
     {
@@ -20,7 +20,7 @@
       "username": "Marcoplo",
       "hireDate": "2001/01/10",
       "status": false,
-      "area": "Kitchen",
+      "area": "Services",
       "jobTitle": "Waitress",
       "tipRate": 0.4
     },
@@ -32,7 +32,7 @@
       "username": "Patata",
       "hireDate": "2016/02/01",
       "status": false,
-      "area": "Kitchen",
+      "area": "Services",
       "jobTitle": "Dining room manager",
       "tipRate": 0.4
     },
@@ -43,8 +43,8 @@
       "country": "Australia",
       "username": "Val",
       "hireDate": "2018/03/02",
-      "status": false,
-      "area": "Kitchen",
+      "status": true,
+      "area": "Services",
       "jobTitle": "Dining room manager",
       "tipRate": 0.4
     }

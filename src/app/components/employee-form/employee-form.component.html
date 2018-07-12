@@ -25,7 +25,7 @@
             <div class="row pl-3">
               <input disabled [ngClass]="{'error-border-field':isFieldValid('dob')}" class="form-control dob-input" matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob" [max]="currentDate">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-              <mat-datepicker disabled="false" #picker></mat-datepicker>
+              <mat-datepicker [disabled]="isViewing" #picker></mat-datepicker>
             </div>
             <span *ngIf="form.controls['dob'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: date of birth is required.</span>
             <span *ngIf="form.controls['dob'].value && isUnder18()" class="error-span">Error: employee is under 18.</span>
@@ -61,9 +61,9 @@
           </div>
           <div class="col-12 col-md-10">
             <div class="row pl-3">
-              <input disabled class="form-control dob-input" [ngClass]="{'error-border-field':isFieldValid('hireDate')}" matInput [matDatepicker]="picker2" placeholder="Hire date" formControlName="hireDate">
+              <input class="form-control dob-input" [ngClass]="{'error-border-field':isFieldValid('hireDate')}" matInput [matDatepicker]="picker2" placeholder="Hire date" formControlName="hireDate" disabled>
               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-              <mat-datepicker disabled="false" #picker2></mat-datepicker>
+              <mat-datepicker [disabled]="isViewing" #picker2></mat-datepicker>
             </div>
             <span *ngIf="form.controls['hireDate'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: hire date is required.</span>
           </div>
@@ -100,7 +100,7 @@
             <label class="mr-1">Job title: </label>
           </div>
           <div class="col-12 col-md-10">
-            <app-job-title [currentArea]="form.controls['area'].value" (changeSelection)="handleJobTitleChange($event)"></app-job-title>
+            <app-job-title [isViewing]="isViewing" [selectedEmployeeJobTitle]="selectedEmployeeData?.jobTitle" [currentArea]="form.controls['area'].value" (changeSelection)="handleJobTitleChange($event)"></app-job-title>
             <span *ngIf="form.controls['jobTitle'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: job title is required.</span>
           </div>
         </div>
@@ -125,7 +125,7 @@
         </button>
       </div>
 
-      <div class="col-1 offset-2 offset-md-0">
+      <div class="col-1 offset-2 offset-md-0" *ngIf="!isViewing">
         <button [disabled]="!isFormValid()" (click)="saveEmployee(form.value)" class="btn btn-outline-primary">Save</button>
       </div>
     </div>

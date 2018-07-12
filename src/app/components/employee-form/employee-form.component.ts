@@ -37,8 +37,7 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges() {
-  }
+  ngOnChanges() {}
 
   createForm() {
     this.form = this.formBuilder.group({
@@ -64,6 +63,22 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
     this.form.controls['area'].setValue(this.selectedEmployeeData.area);
     this.form.controls['jobTitle'].setValue(this.selectedEmployeeData.jobTitle);
     this.form.controls['tipRate'].setValue(this.selectedEmployeeData.tipRate);
+
+    if (this.isViewing) {
+      this.disableFields();
+    }
+  }
+
+  disableFields() {
+    this.form.controls['name'].disable();
+    this.form.controls['dob'].disable();
+    this.form.controls['country'].disable();
+    this.form.controls['userName'].disable();
+    this.form.controls['hireDate'].disable();
+    this.form.controls['status'].disable();
+    this.form.controls['area'].disable();
+    this.form.controls['jobTitle'].disable();
+    this.form.controls['tipRate'].disable();
   }
 
   getCountries() {
