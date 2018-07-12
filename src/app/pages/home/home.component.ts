@@ -30,6 +30,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  handleViewEmployee(employeeId) {
+    const selectedEmployee = this.employees.find( employee => employee.id === employeeId);
+  }
+
   handleDeleteEmployee(employeeId) {
     this.employeesService.deleteEmployee(employeeId).subscribe(res => {
       this.loadEmployees();

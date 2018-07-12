@@ -47,7 +47,7 @@
             <button mat-icon-button  matTooltip="Edit employee" matTooltipClass="tooltip-list-properties">
               <mat-icon aria-label="Edit employee">create</mat-icon>
             </button>
-            <button mat-icon-button  matTooltip="View employee" matTooltipClass="tooltip-list-properties">
+            <button (click)="viewEmployee(row.id)" mat-icon-button  matTooltip="View employee" matTooltipClass="tooltip-list-properties">
               <mat-icon aria-label="View employee">visibility</mat-icon>
             </button>
             <button (click)="deleteEmployee(row.id)" mat-icon-button  matTooltip="Delete employee" matTooltipClass="tooltip-list-properties">

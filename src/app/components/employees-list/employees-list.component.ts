@@ -15,6 +15,7 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @Input() employeesList: Employee[];
+  @Output() viewEployeeOnClick = new EventEmitter();
   @Output() deleteEployeeOnClick = new EventEmitter();
 
   constructor(private calculateAgeService: CalculateAgeService) { }
@@ -52,6 +53,10 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.tbDataSource.filter = filterValue;
+  }
+
+  viewEmployee(employeeId) {
+    this.viewEployeeOnClick.emit(employeeId);
   }
 
   deleteEmployee(employeeId) {
