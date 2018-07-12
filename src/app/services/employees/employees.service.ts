@@ -16,4 +16,8 @@ export class EmployeesService {
     return this.http.post<Employee[]>('http://localhost:3000/employees', newEmployee);
   }
 
+  deleteEmployee(employeeId) {
+    return this.http.delete(`http://localhost:3000/employees/${employeeId}`);
+  }
+
 }

@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, ViewChild} from '@angular/core';
 import {Employee} from '../../models/employee.model';
 import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
@@ -15,6 +15,7 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @Input() employeesList: Employee[];
+  @Output() deleteEployeeOnClick = new EventEmitter();
 
   constructor(private calculateAgeService: CalculateAgeService) { }
 
@@ -51,5 +52,9 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
     filterValue = filterValue.trim();
     filterValue = filterValue.toLowerCase();
     this.tbDataSource.filter = filterValue;
+  }
+
+  deleteEmployee(employeeId) {
+    this.deleteEployeeOnClick.emit(employeeId);
   }
 }
