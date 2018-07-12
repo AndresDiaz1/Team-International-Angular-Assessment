@@ -24,7 +24,6 @@ export class ViewEmployeeComponent implements OnInit {
 
   getEmployeesData() {
     this.store.select(fromStore.getAllEmployees).subscribe(employees => {
-      console.log('los empleados', employees)
       this.getEmployeeId(employees);
     });
   }

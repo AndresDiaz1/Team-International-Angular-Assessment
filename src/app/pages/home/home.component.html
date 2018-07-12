@@ -1,4 +1,4 @@
-<app-employees-list (viewEployeeOnClick)="handleViewEmployee($event)" (deleteEployeeOnClick)="handleDeleteEmployee($event)" [employeesList]="employees"></app-employees-list>
+<app-employees-list (editEmployeeOnClick)="handleEditEmployee($event)" (viewEmployeeOnClick)="handleViewEmployee($event)" (deleteEmployeeOnClick)="handleDeleteEmployee($event)" [employeesList]="employees"></app-employees-list>
 <div class="row px-4">
   <button [routerLink]="['/newUser']" mat-icon-button class="btn add-employee-button px-2">
     <mat-icon aria-label="Add employee">add</mat-icon>

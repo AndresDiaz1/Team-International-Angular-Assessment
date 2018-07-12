@@ -44,7 +44,7 @@
         <ng-container matColumnDef="actions">
           <mat-header-cell *matHeaderCellDef ></mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <button mat-icon-button  matTooltip="Edit employee" matTooltipClass="tooltip-list-properties">
+            <button (click)="editEployee(row.id)" mat-icon-button  matTooltip="Edit employee" matTooltipClass="tooltip-list-properties">
               <mat-icon aria-label="Edit employee">create</mat-icon>
             </button>
             <button (click)="viewEmployee(row.id)" mat-icon-button  matTooltip="View employee" matTooltipClass="tooltip-list-properties">

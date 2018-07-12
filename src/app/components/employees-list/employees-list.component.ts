@@ -15,8 +15,9 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @Input() employeesList: Employee[];
-  @Output() viewEployeeOnClick = new EventEmitter();
-  @Output() deleteEployeeOnClick = new EventEmitter();
+  @Output() editEmployeeOnClick = new EventEmitter();
+  @Output() viewEmployeeOnClick = new EventEmitter();
+  @Output() deleteEmployeeOnClick = new EventEmitter();
 
   constructor(private calculateAgeService: CalculateAgeService) { }
 
@@ -55,11 +56,15 @@ export class EmployeesListComponent implements OnInit,  OnChanges {
     this.tbDataSource.filter = filterValue;
   }
 
+  editEployee(employeeId) {
+    this.editEmployeeOnClick.emit(employeeId);
+  }
+
   viewEmployee(employeeId) {
-    this.viewEployeeOnClick.emit(employeeId);
+    this.viewEmployeeOnClick.emit(employeeId);
   }
 
   deleteEmployee(employeeId) {
-    this.deleteEployeeOnClick.emit(employeeId);
+    this.deleteEmployeeOnClick.emit(employeeId);
   }
 }

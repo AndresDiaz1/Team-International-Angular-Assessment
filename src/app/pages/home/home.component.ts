@@ -31,6 +31,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  handleEditEmployee(employeeId) {
+    this.router.navigate(['/someUser', employeeId]);
+  }
+
   handleViewEmployee(employeeId) {
     this.router.navigate(['/someUser', employeeId], { queryParams: { viewmode: true}});
   }
