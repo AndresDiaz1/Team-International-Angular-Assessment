@@ -1,3 +1,3 @@
-<app-employee-form (goBack)="handleGoBack($event)" (pressedSave)="saveNewEmployee($event)">
+<app-employee-form [selectedEmployeeData]="null" [isViewing]="false" (goBack)="handleGoBack($event)" (pressedSave)="saveNewEmployee($event)">
   <label class="font-weight-bold pl-3">New Employee</label>
 </app-employee-form>
