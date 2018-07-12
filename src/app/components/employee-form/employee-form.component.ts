@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CountryService} from '../../services/country/country.service';
-import {EmployeesService} from '../../services/employees/employees.service';
 import {DatesConverterService} from '../../miscellaneous/dates-converter/dates-converter.service';
 import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
 import {Employee} from '../../models/employee.model';
@@ -18,10 +17,10 @@ export class EmployeeFormComponent implements OnInit {
   hasPressedSaveEmployee: boolean;
   countries;
   currentArea: string;
+  @Output() pressedSave = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder,
               private countryService: CountryService,
-              private employeesService: EmployeesService,
               private datesConverterService: DatesConverterService,
               private calculateAgeService: CalculateAgeService) { }
 
@@ -93,8 +92,7 @@ export class EmployeeFormComponent implements OnInit {
     this.hasPressedSaveEmployee = true;
     if (this.isFormValid()) {
       const employee = this.prepareEmployeeData(post);
-      console.log('el empleado nuevo es', employee);
-      //this.addEmployee();
+      this.pressedSave.emit(employee);
     }
   }
 
@@ -117,13 +115,4 @@ export class EmployeeFormComponent implements OnInit {
       tipRate: tipRate
     };
   }
-
-  addEmployee(employee) {
-    this.employeesService.addEmployee(employee).subscribe(res => {
-      console.log('agrego', res);
-    }, err => {
-      console.log('hubo error', err);
-    });
-  }
-
 }

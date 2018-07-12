@@ -13,17 +13,6 @@ export class EmployeesService {
   }
 
   addEmployee(newEmployee): Observable<Employee[]> {
-    newEmployee = {
-      "name": "Valerie Liberty",
-      "dob": "1988/03/02",
-      "country": "Australia",
-      "username": "Val",
-      "hireDate": "2018/03/02",
-      "status": false,
-      "area": "services",
-      "jobTitle": 3,
-      "tipRate": 0.4
-    }
     return this.http.post<Employee[]>('http://localhost:3000/employees', newEmployee);
   }
 

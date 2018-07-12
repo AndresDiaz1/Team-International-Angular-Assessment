@@ -16,6 +16,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {CountryService} from './services/country/country.service';
 import { JobTitleComponent } from './components/job-title/job-title.component';
 import {DatesConverterService} from './miscellaneous/dates-converter/dates-converter.service';
+import { NewEmployeeComponent } from './pages/new-employee/new-employee.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {DatesConverterService} from './miscellaneous/dates-converter/dates-conve
     EmployeesListComponent,
     EmployeeFormComponent,
     JobTitleComponent,
+    NewEmployeeComponent,
   ],
   imports: [
     BrowserModule,
