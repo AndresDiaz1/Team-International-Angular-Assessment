@@ -8,8 +8,8 @@
       "username": "Peldi",
       "hireDate": "2017/10/01",
       "status": false,
-      "area": "services",
-      "jobTitle": 1,
+      "area": "Services",
+      "jobTitle": "Manager",
       "tipRate": 0
     },
     {
@@ -20,20 +20,20 @@
       "username": "Marcoplo",
       "hireDate": "2001/01/10",
       "status": false,
-      "area": "kitchen",
-      "jobTitle": 2,
+      "area": "Kitchen",
+      "jobTitle": "Waitress",
       "tipRate": 0.4
     },
     {
       "id": 3,
       "name": "Maria Maclachland",
       "dob": "1977/05/26",
-      "country": "Scotland",
+      "country": "Albania",
       "username": "Patata",
       "hireDate": "2016/02/01",
       "status": false,
-      "area": "kitchen",
-      "jobTitle": 3,
+      "area": "Kitchen",
+      "jobTitle": "Dining room manager",
       "tipRate": 0.4
     },
     {
@@ -44,8 +44,8 @@
       "username": "Val",
       "hireDate": "2018/03/02",
       "status": false,
-      "area": "services",
-      "jobTitle": 3,
+      "area": "Kitchen",
+      "jobTitle": "Dining room manager",
       "tipRate": 0.4
     }
   ]

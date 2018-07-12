@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CountryService} from '../../services/country/country.service';
 import {DatesConverterService} from '../../miscellaneous/dates-converter/dates-converter.service';
@@ -10,7 +10,7 @@ import {Employee} from '../../models/employee.model';
   templateUrl: './employee-form.component.html',
   styleUrls: ['./employee-form.component.scss']
 })
-export class EmployeeFormComponent implements OnInit {
+export class EmployeeFormComponent implements OnInit, OnChanges {
 
   form: FormGroup;
   currentDate: Date;
@@ -19,6 +19,8 @@ export class EmployeeFormComponent implements OnInit {
   currentArea: string;
   @Output() pressedSave = new EventEmitter();
   @Output() goBack = new EventEmitter();
+  @Input() isViewing: boolean = false;
+  @Input() selectedEmployeeData: Employee = null;
 
   constructor(private formBuilder: FormBuilder,
               private countryService: CountryService,
@@ -30,6 +32,12 @@ export class EmployeeFormComponent implements OnInit {
     this.hasPressedSaveEmployee = false;
     this.createForm();
     this.getCountries();
+    if (this.selectedEmployeeData) {
+      this.fillForm();
+    }
+  }
+
+  ngOnChanges() {
   }
 
   createForm() {
@@ -37,13 +45,25 @@ export class EmployeeFormComponent implements OnInit {
       name: [null, Validators.required],
       dob: [null, Validators.required],
       country: [null, Validators.required],
-      userName: [null, [Validators.required, Validators.pattern('^[a-z0-9]+$')]],
+      userName: [null, [Validators.required, Validators.pattern('^[a-zA-Z0-9]+$')]],
       hireDate: [null, Validators.required],
       status: [true, Validators.required],
       area: [null, Validators.required],
       jobTitle: [null, Validators.required],
       tipRate: [null],
     });
+  }
+
+  fillForm() {
+    this.form.controls['name'].setValue(this.selectedEmployeeData.name);
+    this.form.controls['dob'].setValue(new Date(this.selectedEmployeeData.dob));
+    this.form.controls['country'].setValue(this.selectedEmployeeData.country);
+    this.form.controls['userName'].setValue(this.selectedEmployeeData.username);
+    this.form.controls['hireDate'].setValue(new Date(this.selectedEmployeeData.hireDate));
+    this.form.controls['status'].setValue(this.selectedEmployeeData.status);
+    this.form.controls['area'].setValue(this.selectedEmployeeData.area);
+    this.form.controls['jobTitle'].setValue(this.selectedEmployeeData.jobTitle);
+    this.form.controls['tipRate'].setValue(this.selectedEmployeeData.tipRate);
   }
 
   getCountries() {

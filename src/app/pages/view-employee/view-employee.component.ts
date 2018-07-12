@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import {Observable} from 'rxjs/Observable';
-import { forkJoin } from 'rxjs/observable/forkJoin';
-import {Employee} from '../../models/employee.model';
 import * as fromStore from '../../store';
 import {Store} from '@ngrx/store';
+import {Employee} from '../../models/employee.model';
 
 
 @Component({
@@ -15,6 +13,8 @@ import {Store} from '@ngrx/store';
 export class ViewEmployeeComponent implements OnInit {
 
   isViewMode: boolean = false;
+  selectedEmployee: Employee;
+
   constructor(private route: ActivatedRoute, private router: Router, private store: Store<fromStore.EmployeesState>) { }
 
   ngOnInit() {
@@ -49,8 +49,10 @@ export class ViewEmployeeComponent implements OnInit {
 
   getSelectedEmployeeData(employees, employeeId) {
     const selectedEmployee = employees.find( employee => employee.id === employeeId);
-    console.log('el empleado selccioando', selectedEmployee);
+    this.selectedEmployee = selectedEmployee;
   }
 
-
+  handleGoBack() {
+    this.router.navigate(['/', 'home']);
+  }
 }
