@@ -1,6 +1,6 @@
 <app-employees-list [employeesList]="employees"></app-employees-list>
 <div class="row px-4">
-  <button mat-icon-button class="btn add-employee-button px-2">
+  <button [routerLink]="['/newUser']" mat-icon-button class="btn add-employee-button px-2">
     <mat-icon aria-label="Add employee">add</mat-icon>
     Add new Employee
   </button>

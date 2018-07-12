@@ -11,18 +11,22 @@ import {CalculateAgeService} from './miscellaneous/calculate-age.service';
 import { StoreModule} from '@ngrx/store';
 import { EffectsModule} from '@ngrx/effects';
 import { reducers, effects } from './store';
+import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    EmployeesListComponent
+    EmployeesListComponent,
+    EmployeeFormComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects)
   ],
