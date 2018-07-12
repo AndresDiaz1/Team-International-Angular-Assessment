@@ -12,7 +12,8 @@
             <label class="mr-1">Name: </label>
           </div>
           <div class="col-12 col-md-10">
-            <input aria-label="user name" class="form-control w-75" formControlName="name" placeholder="Darth Vader">
+            <input aria-label="user name" class="form-control w-75" [ngClass]="{'error-border-field':isFieldValid('name')}" formControlName="name" placeholder="Darth Vader">
+            <span *ngIf="form.controls['name'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: name is required.</span>
           </div>
         </div>
 
@@ -22,10 +23,11 @@
           </div>
           <div class="col-12 col-md-10">
             <div class="row pl-3">
-              <input class="form-control dob-input" matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob" [max]="currentDate">
+              <input [ngClass]="{'error-border-field':isFieldValid('dob')}" class="form-control dob-input" matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob" [max]="currentDate">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
             </div>
+            <span *ngIf="form.controls['dob'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: date of birth is required.</span>
           </div>
         </div>
 
@@ -34,9 +36,10 @@
             <label class="mr-1">Country: </label>
           </div>
           <div class="col-12 col-md-10">
-            <mat-select class="form-control w-75" formControlName="country" aria-label="Country"  placeholder="Select a country">
+            <mat-select class="form-control w-75" formControlName="country" [ngClass]="{'error-border-field':isFieldValid('country')}" aria-label="Country"  placeholder="Select a country">
               <mat-option>---</mat-option>
             </mat-select>
+            <span *ngIf="form.controls['country'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: country is required.</span>
           </div>
         </div>
 
@@ -45,7 +48,8 @@
             <label class="mr-1">Username: </label>
           </div>
           <div class="col-12 col-md-10">
-            <input aria-label="username" class="form-control w-75" formControlName="userName" placeholder="Pepe">
+            <input aria-label="username" class="form-control w-75" [ngClass]="{'error-border-field':isFieldValid('userName')}" formControlName="userName" placeholder="Pepe">
+            <span *ngIf="form.controls['userName'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: username is required.</span>
           </div>
         </div>
 
@@ -55,10 +59,11 @@
           </div>
           <div class="col-12 col-md-10">
             <div class="row pl-3">
-              <input class="form-control dob-input" matInput [matDatepicker]="picker2" placeholder="Hire date" formControlName="hireDate">
+              <input class="form-control dob-input" [ngClass]="{'error-border-field':isFieldValid('hireDate')}" matInput [matDatepicker]="picker2" placeholder="Hire date" formControlName="hireDate">
               <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
               <mat-datepicker #picker2></mat-datepicker>
             </div>
+            <span *ngIf="form.controls['hireDate'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: hire date is required.</span>
           </div>
         </div>
 
@@ -67,7 +72,8 @@
             <label class="mr-1">Status: </label>
           </div>
           <div class="col-12 col-md-10">
-            <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+            <mat-slide-toggle formControlName="status" [ngClass]="{'error-border-field':isFieldValid('status')}"></mat-slide-toggle>
+            <span *ngIf="form.controls['status'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: status is required.</span>
           </div>
         </div>
 
@@ -79,10 +85,11 @@
             <label class="mr-1">Area: </label>
           </div>
           <div class="col-12 col-md-10">
-            <mat-button-toggle-group formControlName="area">
+            <mat-button-toggle-group formControlName="area" [ngClass]="{'error-border-field':isFieldValid('area')}">
               <mat-button-toggle [value]="'Services'">Services</mat-button-toggle>
               <mat-button-toggle [value]="'Kitchen'">Kitchen</mat-button-toggle>
             </mat-button-toggle-group>
+            <span *ngIf="form.controls['area'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: area is required.</span>
           </div>
         </div>
 
@@ -91,9 +98,10 @@
             <label class="mr-1">Job title: </label>
           </div>
           <div class="col-12 col-md-10">
-            <mat-select class="form-control w-75" formControlName="jobTitle" aria-label="Job title"  placeholder="Select a job title">
+            <mat-select class="form-control w-75" formControlName="jobTitle" aria-label="Job title" [ngClass]="{'error-border-field':isFieldValid('jobTitle')}" placeholder="Select a job title">
               <mat-option>---</mat-option>
             </mat-select>
+            <span *ngIf="form.controls['jobTitle'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: job title is required.</span>
           </div>
         </div>
 
@@ -102,79 +110,27 @@
             <label class="mr-1">Tip Rate: </label>
           </div>
           <div class="col-12 col-md-10">
-            <input aria-label="username" class="form-control w-75" formControlName="tipRate" placeholder="%0.01">
+            <input aria-label="tip rate" class="form-control w-75" [ngClass]="{'error-border-field':isFieldValid('tipRate')}" formControlName="tipRate" placeholder="%0.01">
+            <span *ngIf="form.controls['tipRate'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: job title is required.</span>
           </div>
         </div>
 
       </div>
     </div>
 
-    <!--<div class="row">-->
-      <!--<div class="col-12 col-md-6">-->
-        <!--<div class="row">-->
-          <!--<div class="col-1">-->
-            <!--<label class="mr-1">Name: </label>-->
-          <!--</div>-->
-          <!--<div class="col-11">-->
-            <!--<input aria-label="user name" class="form-control w-75" formControlName="name" placeholder="Darth Vader">-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="col-12 col-md-6">-->
-        <!--<div class="row">-->
-          <!--<div class="col-1">-->
-            <!--<label class="mr-1">Area: </label>-->
-          <!--</div>-->
-          <!--<div class="col-11">-->
-            <!--<mat-radio-group formControlName="area">-->
-              <!--<mat-radio-button [value]="'services'">Services</mat-radio-button>-->
-              <!--<mat-radio-button [value]="'kitchen'">Kitchen</mat-radio-button>-->
-            <!--</mat-radio-group>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
+    <div class="row pl-3 mt-3">
+      <div class="col-1 offset-1">
+        <button [routerLink]="['/home']"  mat-icon-button >
+          <mat-icon aria-label="Delete employee">arrow_back_ios</mat-icon>Back
+        </button>
+      </div>
 
-    <!--<div class="row">-->
-      <!--<div class="col-12 col-md-6">-->
-        <!--<div class="row">-->
-          <!--<div class="col-1">-->
-            <!--<label class="mr-3">Dob: </label>-->
-          <!--</div>-->
-          <!--<div class="col-11">-->
-            <!--<div class="row">-->
-              <!--<input class="form-control dob-input" matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob" [max]="currentDate">-->
-              <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
-              <!--<mat-datepicker #picker></mat-datepicker>-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="col-12 col-md-6">-->
-        <!--<div class="row">-->
-          <!--<label class="mr-3">Job title: </label>-->
-          <!--<mat-select class="form-control w-75" formControlName="jobTitle" aria-label="Job title"  placeholder="Select job title">-->
-            <!--<mat-option>-&#45;&#45;</mat-option>-->
-          <!--</mat-select>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
+      <div class="col-1 offset-2 offset-md-0">
+        <button (click)="saveEmployee(form.value)" class="btn btn-outline-primary">Save</button>
+      </div>
+    </div>
 
-    <!--<div class="row">-->
-      <!--<div class="col-12 col-md-6">-->
-        <!--<div class="row">-->
-          <!--<div class="col-1">-->
-            <!--<label>Country: </label>-->
-          <!--</div>-->
-          <!--<div class="col-11">-->
-            <!--<mat-select class="form-control" formControlName="country" aria-label="Country"  placeholder="Select a country">-->
-              <!--<mat-option>-&#45;&#45;</mat-option>-->
-            <!--</mat-select>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
 
-    <button>dasda</button>
+
   </form>
 </mat-card>
