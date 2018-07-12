@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import * as fromStore from '../../store';
 import {Store} from '@ngrx/store';
 import {Employee} from '../../models/employee.model';
+import {EmployeesService} from '../../services/employees/employees.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class ViewEmployeeComponent implements OnInit {
   isViewMode: boolean = false;
   selectedEmployee: Employee;
 
-  constructor(private route: ActivatedRoute, private router: Router, private store: Store<fromStore.EmployeesState>) { }
+  constructor(private route: ActivatedRoute, private router: Router, private store: Store<fromStore.EmployeesState>, private employeesService: EmployeesService) { }
 
   ngOnInit() {
     this.getEmployeesData();
@@ -50,6 +51,14 @@ export class ViewEmployeeComponent implements OnInit {
   getSelectedEmployeeData(employees, employeeId) {
     const selectedEmployee = employees.find( employee => employee.id === employeeId);
     this.selectedEmployee = selectedEmployee;
+  }
+
+  handlePressedSave(employee) {
+    this.employeesService.updateEmployee(employee, this.selectedEmployee.id).subscribe(res => {
+      console.log('make update', res);
+    }, err => {
+      console.log('error updating employee', err);
+    });
   }
 
   handleGoBack() {

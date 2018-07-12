@@ -16,6 +16,10 @@ export class EmployeesService {
     return this.http.post<Employee[]>('http://localhost:3000/employees', newEmployee);
   }
 
+  updateEmployee(employeeData, employeeId) {
+    return this.http.put(`http://localhost:3000/employees/${employeeId}`, employeeData);
+  }
+
   deleteEmployee(employeeId) {
     return this.http.delete(`http://localhost:3000/employees/${employeeId}`);
   }
