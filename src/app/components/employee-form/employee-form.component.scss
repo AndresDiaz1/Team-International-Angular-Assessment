@@ -1,0 +1,13 @@
+.dob-input{
+  width: 68%;
+}
+
+.tip-rate-container{
+  margin-top: 6rem;
+}
+
+@media (max-width: 640px) {
+  .tip-rate-container{
+    margin-top: 2rem;
+  }
+}

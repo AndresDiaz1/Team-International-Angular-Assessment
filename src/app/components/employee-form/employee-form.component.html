@@ -1,5 +1,180 @@
 <mat-card class="m-md-3">
   <form [formGroup]="form">
+    <div class="row">
+      <label class="font-weight-bold pl-3">New Employee</label>
+    </div>
+
+    <div class="row">
+      <div class="col-12 col-md-6">
+
+        <div class="row">
+          <div class="col-12 col-md-2">
+            <label class="mr-1">Name: </label>
+          </div>
+          <div class="col-12 col-md-10">
+            <input aria-label="user name" class="form-control w-75" formControlName="name" placeholder="Darth Vader">
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12 col-md-2">
+            <label class="mr-1">Dob: </label>
+          </div>
+          <div class="col-12 col-md-10">
+            <div class="row pl-3">
+              <input class="form-control dob-input" matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob" [max]="currentDate">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12 col-md-2">
+            <label class="mr-1">Country: </label>
+          </div>
+          <div class="col-12 col-md-10">
+            <mat-select class="form-control w-75" formControlName="country" aria-label="Country"  placeholder="Select a country">
+              <mat-option>---</mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12 col-md-2">
+            <label class="mr-1">Username: </label>
+          </div>
+          <div class="col-12 col-md-10">
+            <input aria-label="username" class="form-control w-75" formControlName="userName" placeholder="Pepe">
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12 col-md-2">
+            <label class="mr-1">Hire Date: </label>
+          </div>
+          <div class="col-12 col-md-10">
+            <div class="row pl-3">
+              <input class="form-control dob-input" matInput [matDatepicker]="picker2" placeholder="Hire date" formControlName="hireDate">
+              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+              <mat-datepicker #picker2></mat-datepicker>
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12 col-md-2">
+            <label class="mr-1">Status: </label>
+          </div>
+          <div class="col-12 col-md-10">
+            <mat-slide-toggle formControlName="status"></mat-slide-toggle>
+          </div>
+        </div>
+
+      </div>
+      <div class="col-12 col-md-6">
+
+        <div class="row">
+          <div class="col-12 col-md-2">
+            <label class="mr-1">Area: </label>
+          </div>
+          <div class="col-12 col-md-10">
+            <mat-button-toggle-group formControlName="area">
+              <mat-button-toggle [value]="'Services'">Services</mat-button-toggle>
+              <mat-button-toggle [value]="'Kitchen'">Kitchen</mat-button-toggle>
+            </mat-button-toggle-group>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col-12 col-md-2">
+            <label class="mr-1">Job title: </label>
+          </div>
+          <div class="col-12 col-md-10">
+            <mat-select class="form-control w-75" formControlName="jobTitle" aria-label="Job title"  placeholder="Select a job title">
+              <mat-option>---</mat-option>
+            </mat-select>
+          </div>
+        </div>
+
+        <div class="row tip-rate-container">
+          <div class="col-12 col-md-2">
+            <label class="mr-1">Tip Rate: </label>
+          </div>
+          <div class="col-12 col-md-10">
+            <input aria-label="username" class="form-control w-75" formControlName="tipRate" placeholder="%0.01">
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!--<div class="row">-->
+      <!--<div class="col-12 col-md-6">-->
+        <!--<div class="row">-->
+          <!--<div class="col-1">-->
+            <!--<label class="mr-1">Name: </label>-->
+          <!--</div>-->
+          <!--<div class="col-11">-->
+            <!--<input aria-label="user name" class="form-control w-75" formControlName="name" placeholder="Darth Vader">-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-12 col-md-6">-->
+        <!--<div class="row">-->
+          <!--<div class="col-1">-->
+            <!--<label class="mr-1">Area: </label>-->
+          <!--</div>-->
+          <!--<div class="col-11">-->
+            <!--<mat-radio-group formControlName="area">-->
+              <!--<mat-radio-button [value]="'services'">Services</mat-radio-button>-->
+              <!--<mat-radio-button [value]="'kitchen'">Kitchen</mat-radio-button>-->
+            <!--</mat-radio-group>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="row">-->
+      <!--<div class="col-12 col-md-6">-->
+        <!--<div class="row">-->
+          <!--<div class="col-1">-->
+            <!--<label class="mr-3">Dob: </label>-->
+          <!--</div>-->
+          <!--<div class="col-11">-->
+            <!--<div class="row">-->
+              <!--<input class="form-control dob-input" matInput [matDatepicker]="picker" placeholder="Date of birth" formControlName="dob" [max]="currentDate">-->
+              <!--<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>-->
+              <!--<mat-datepicker #picker></mat-datepicker>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="col-12 col-md-6">-->
+        <!--<div class="row">-->
+          <!--<label class="mr-3">Job title: </label>-->
+          <!--<mat-select class="form-control w-75" formControlName="jobTitle" aria-label="Job title"  placeholder="Select job title">-->
+            <!--<mat-option>-&#45;&#45;</mat-option>-->
+          <!--</mat-select>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
+    <!--<div class="row">-->
+      <!--<div class="col-12 col-md-6">-->
+        <!--<div class="row">-->
+          <!--<div class="col-1">-->
+            <!--<label>Country: </label>-->
+          <!--</div>-->
+          <!--<div class="col-11">-->
+            <!--<mat-select class="form-control" formControlName="country" aria-label="Country"  placeholder="Select a country">-->
+              <!--<mat-option>-&#45;&#45;</mat-option>-->
+            <!--</mat-select>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+
     <button>dasda</button>
   </form>
 </mat-card>

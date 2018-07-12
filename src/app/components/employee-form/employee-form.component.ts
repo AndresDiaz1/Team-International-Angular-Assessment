@@ -9,10 +9,12 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 export class EmployeeFormComponent implements OnInit {
 
   form: FormGroup;
+  currentDate: Date;
 
   constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+    this.currentDate = new Date();
     this.createForm();
   }
 

@@ -6,7 +6,14 @@ import {
   MatTableModule,
   MatSortModule,
   MatPaginatorModule,
-  MatTooltipModule, MatButtonModule
+  MatTooltipModule,
+  MatButtonModule,
+  MatRadioModule,
+  MatSelectModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatButtonToggleModule,
+  MatSlideToggleModule
 } from '@angular/material';
 
 @NgModule({
@@ -18,7 +25,13 @@ import {
     MatSortModule,
     MatPaginatorModule,
     MatTooltipModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule
   ],
   declarations: [],
   exports: [
@@ -29,7 +42,13 @@ import {
     MatSortModule,
     MatPaginatorModule,
     MatTooltipModule,
-    MatButtonModule
+    MatButtonModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatButtonToggleModule,
+    MatSlideToggleModule
   ],
   providers: []
 })
