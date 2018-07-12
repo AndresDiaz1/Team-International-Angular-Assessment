@@ -37,7 +37,7 @@
           </div>
           <div class="col-12 col-md-10">
             <mat-select class="form-control w-75" formControlName="country" [ngClass]="{'error-border-field':isFieldValid('country')}" aria-label="Country"  placeholder="Select a country">
-              <mat-option>---</mat-option>
+              <mat-option *ngFor="let country of countries" [value]="country.name">{{country.name}}</mat-option>
             </mat-select>
             <span *ngIf="form.controls['country'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: country is required.</span>
           </div>

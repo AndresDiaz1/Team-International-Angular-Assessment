@@ -1,7 +1,7 @@
 import {async, ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomeComponent } from './home.component';
-import {EmployeesService} from '../../services/employees.service';
+import {EmployeesService} from '../../services/employees/employees.service';
 import {Observable} from 'rxjs/Observable';
 import {Response, ResponseOptions} from '@angular/http';
 import 'rxjs/add/observable/of';
@@ -15,7 +15,18 @@ import {StateObservable, Store} from '@ngrx/store';
 class MockEmployeesService {
   getEmployees() {
     return Observable.of(
-      new Response(new ResponseOptions({body: JSON.stringify({})}))
+      new Response(new ResponseOptions({body: JSON.stringify([{
+          'id': 1,
+          'name': 'Giacomo Guilizoni',
+          'dob': '1978/03/21',
+          'country': 'Italy',
+          'username': 'Peldi',
+          'hireDate': '2017/10/01',
+          'status': false,
+          'area': 'services',
+          'jobTitle': 1,
+          'tipRate': 0
+        }])}))
     );
   }
 }

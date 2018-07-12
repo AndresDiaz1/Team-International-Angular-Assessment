@@ -3,7 +3,7 @@ import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import {AppRoutingModule} from './app.routing';
-import {EmployeesService} from './services/employees.service';
+import {EmployeesService} from './services/employees/employees.service';
 import {HttpClientModule} from '@angular/common/http';
 import { EmployeesListComponent } from './components/employees-list/employees-list.component';
 import {MaterialModule} from './material/material.module';
@@ -13,6 +13,7 @@ import { EffectsModule} from '@ngrx/effects';
 import { reducers, effects } from './store';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {CountryService} from './services/country/country.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects)
   ],
-  providers: [EmployeesService, CalculateAgeService],
+  providers: [EmployeesService, CalculateAgeService, CountryService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })

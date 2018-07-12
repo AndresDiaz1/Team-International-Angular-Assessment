@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {CountryService} from '../../services/country/country.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -11,13 +12,15 @@ export class EmployeeFormComponent implements OnInit {
   form: FormGroup;
   currentDate: Date;
   hasPressedSaveEmployee: boolean;
+  countries;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private countryService: CountryService) { }
 
   ngOnInit() {
     this.currentDate = new Date();
     this.hasPressedSaveEmployee = false;
     this.createForm();
+    this.getCountries();
   }
 
   createForm() {
@@ -31,6 +34,14 @@ export class EmployeeFormComponent implements OnInit {
       area: [null, Validators.required],
       jobTitle: [null, Validators.required],
       tipRate: [null, Validators.required],
+    });
+  }
+
+  getCountries() {
+    this.countryService.getCountries().subscribe(countries => {
+      this.countries = countries;
+    }, err => {
+      console.log('There was an error loading the countries', err);
     });
   }
 
