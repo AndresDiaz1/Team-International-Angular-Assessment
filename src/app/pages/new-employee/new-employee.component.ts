@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EmployeesService} from '../../services/employees/employees.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-new-employee',
@@ -8,7 +9,8 @@ import {EmployeesService} from '../../services/employees/employees.service';
 })
 export class NewEmployeeComponent implements OnInit {
 
-  constructor(private employeesService: EmployeesService) { }
+  formIsDirty: boolean = false;
+  constructor(private employeesService: EmployeesService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -19,6 +21,18 @@ export class NewEmployeeComponent implements OnInit {
     }, err => {
       console.log('hubo error', err);
     });
+  }
+
+  handleGoBack(isDirty: boolean) {
+    this.formIsDirty = isDirty;
+    this.router.navigate(['/', 'home']);
+  }
+
+  canDeactivate() {
+    if (this.formIsDirty) {
+      return window.confirm('Are you sure want to leave?');
+    }
+    return true;
   }
 
 }

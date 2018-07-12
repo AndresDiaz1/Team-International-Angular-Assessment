@@ -120,7 +120,7 @@
 
     <div class="row pl-3 mt-3">
       <div class="col-1 offset-1">
-        <button [routerLink]="['/home']"  mat-icon-button >
+        <button (click)="hasPressedBack()" mat-icon-button >
           <mat-icon aria-label="Delete employee">arrow_back_ios</mat-icon>Back
         </button>
       </div>

@@ -18,6 +18,7 @@ export class EmployeeFormComponent implements OnInit {
   countries;
   currentArea: string;
   @Output() pressedSave = new EventEmitter();
+  @Output() goBack = new EventEmitter();
 
   constructor(private formBuilder: FormBuilder,
               private countryService: CountryService,
@@ -114,5 +115,9 @@ export class EmployeeFormComponent implements OnInit {
       jobTitle: post.jobTitle,
       tipRate: tipRate
     };
+  }
+
+  hasPressedBack() {
+      this.goBack.emit(this.form.dirty);
   }
 }

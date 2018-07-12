@@ -17,6 +17,7 @@ import {CountryService} from './services/country/country.service';
 import { JobTitleComponent } from './components/job-title/job-title.component';
 import {DatesConverterService} from './miscellaneous/dates-converter/dates-converter.service';
 import { NewEmployeeComponent } from './pages/new-employee/new-employee.component';
+import { CandeactivateguardService} from './guards/candeactivateguard.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,7 @@ import { NewEmployeeComponent } from './pages/new-employee/new-employee.componen
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot(effects)
   ],
-  providers: [EmployeesService, CalculateAgeService, CountryService, DatesConverterService],
+  providers: [EmployeesService, CalculateAgeService, CountryService, DatesConverterService, CandeactivateguardService],
   bootstrap: [AppComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
