@@ -13,7 +13,7 @@ export class EmployeesEffects {
   loadEmployees$ = this.actions$.ofType(employeeActions.LOAD_EMPLOYEES)
     .pipe(switchMap(() => {
         return this.employeesService.getEmployees().pipe(
-          map(employees => new employeeActions.LoadEmployeesSucccess(employees['employees'])),
+          map(employees => new employeeActions.LoadEmployeesSucccess(employees)),
           catchError(error => of(new employeeActions.LoadEmployeesFail(error)))
         );
       }));

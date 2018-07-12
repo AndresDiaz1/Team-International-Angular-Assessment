@@ -14,6 +14,7 @@ import { reducers, effects } from './store';
 import { EmployeeFormComponent } from './components/employee-form/employee-form.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {CountryService} from './services/country/country.service';
+import { JobTitleComponent } from './components/job-title/job-title.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {CountryService} from './services/country/country.service';
     HomeComponent,
     EmployeesListComponent,
     EmployeeFormComponent,
+    JobTitleComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CountryService} from '../../services/country/country.service';
+import {EmployeesService} from '../../services/employees/employees.service';
 
 @Component({
   selector: 'app-employee-form',
@@ -13,8 +14,9 @@ export class EmployeeFormComponent implements OnInit {
   currentDate: Date;
   hasPressedSaveEmployee: boolean;
   countries;
+  currentArea: string;
 
-  constructor(private formBuilder: FormBuilder, private countryService: CountryService) { }
+  constructor(private formBuilder: FormBuilder, private countryService: CountryService, private employeesService: EmployeesService) { }
 
   ngOnInit() {
     this.currentDate = new Date();
@@ -49,11 +51,30 @@ export class EmployeeFormComponent implements OnInit {
     return !this.form.get(field).valid && this.hasPressedSaveEmployee;
   }
 
+  changeArea() {
+    this.currentArea = this.form.controls['area'].value;
+  }
+
+  handleJobTitleChange(jobTitle) {
+    this.form.controls['jobTitle'].setValue(jobTitle);
+  }
+
   saveEmployee(post) {
     this.hasPressedSaveEmployee = true;
-    if (this.form.valid) {
+    console.log('el empleado', post);
 
+    if (this.form.valid) {
+      console.log('el empleado', post);
+      //this.addEmployee();
     }
+  }
+
+  addEmployee(employee) {
+    this.employeesService.addEmployee(employee).subscribe(res => {
+      console.log('agrego', res);
+    }, err => {
+      console.log('hubo error', err);
+    });
   }
 
 }

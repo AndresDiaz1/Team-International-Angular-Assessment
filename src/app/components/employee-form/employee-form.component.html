@@ -85,7 +85,7 @@
             <label class="mr-1">Area: </label>
           </div>
           <div class="col-12 col-md-10">
-            <mat-button-toggle-group formControlName="area" [ngClass]="{'error-border-field':isFieldValid('area')}">
+            <mat-button-toggle-group (change)="changeArea()" formControlName="area" [ngClass]="{'error-border-field':isFieldValid('area')}">
               <mat-button-toggle [value]="'Services'">Services</mat-button-toggle>
               <mat-button-toggle [value]="'Kitchen'">Kitchen</mat-button-toggle>
             </mat-button-toggle-group>
@@ -98,9 +98,7 @@
             <label class="mr-1">Job title: </label>
           </div>
           <div class="col-12 col-md-10">
-            <mat-select class="form-control w-75" formControlName="jobTitle" aria-label="Job title" [ngClass]="{'error-border-field':isFieldValid('jobTitle')}" placeholder="Select a job title">
-              <mat-option>---</mat-option>
-            </mat-select>
+            <app-job-title [currentArea]="form.controls['area'].value" (changeSelection)="handleJobTitleChange($event)"></app-job-title>
             <span *ngIf="form.controls['jobTitle'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: job title is required.</span>
           </div>
         </div>

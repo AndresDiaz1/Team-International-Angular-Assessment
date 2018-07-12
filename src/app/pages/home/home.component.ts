@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Employee} from '../../models/employee.model';
 import {Store} from '@ngrx/store';
 import * as fromStore from '../../store';
-import {LoadEmployees} from '../../store/actions/employees.actions';
 
 @Component({
   selector: 'app-home',
