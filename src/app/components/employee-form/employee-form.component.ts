@@ -36,7 +36,7 @@ export class EmployeeFormComponent implements OnInit {
       name: [null, Validators.required],
       dob: [null, Validators.required],
       country: [null, Validators.required],
-      userName: [null, Validators.required],
+      userName: [null, [Validators.required, Validators.pattern('^[a-z0-9]+$')]],
       hireDate: [null, Validators.required],
       status: [true, Validators.required],
       area: [null, Validators.required],

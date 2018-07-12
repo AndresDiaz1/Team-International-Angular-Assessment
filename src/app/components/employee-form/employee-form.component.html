@@ -51,6 +51,7 @@
           <div class="col-12 col-md-10">
             <input aria-label="username" class="form-control w-75" [ngClass]="{'error-border-field':isFieldValid('userName')}" formControlName="userName" placeholder="Pepe">
             <span *ngIf="form.controls['userName'].hasError('required') && hasPressedSaveEmployee" class="error-span">Error: username is required.</span>
+            <span *ngIf="form.controls['userName'].hasError('pattern')" class="error-span">Error: username can not contain special characters.</span>
           </div>
         </div>
 
