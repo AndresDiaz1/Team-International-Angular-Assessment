@@ -9,18 +9,22 @@ import {EmployeesListComponent} from '../employees-list/employees-list.component
 import {Observable} from 'rxjs/Observable';
 import {Response, ResponseOptions} from '@angular/http';
 import {CountryService} from '../../services/country/country.service';
+import {MockComponent} from 'ng2-mock-component';
+import {NewEmployeeComponent} from '../../pages/new-employee/new-employee.component';
+import {ViewEmployeeComponent} from '../../pages/view-employee/view-employee.component';
+import {JobTitleComponent} from '../job-title/job-title.component';
+import {DatesConverterService} from '../../miscellaneous/dates-converter/dates-converter.service';
+import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
 
 class MockCountryService {
   getCountries() {
-    return Observable.of(
-      new Response(new ResponseOptions({body: JSON.stringify([{
-          name: 'Afganistan'
-        }])}))
-    );
+    return {
+      subscribe: () => [{name: 'Affganistan'}]
+    };
   }
 }
 
-xdescribe('EmployeeFormComponent', () => {
+describe('EmployeeFormComponent', () => {
   let component: EmployeeFormComponent;
   let fixture: ComponentFixture<EmployeeFormComponent>;
   let injector: TestBed;
@@ -32,10 +36,17 @@ xdescribe('EmployeeFormComponent', () => {
       declarations: [
         EmployeeFormComponent,
         HomeComponent,
-        EmployeesListComponent,
+        NewEmployeeComponent,
+        ViewEmployeeComponent,
+        JobTitleComponent,
+        EmployeesListComponent
       ],
       imports: [ReactiveFormsModule, MaterialModule, AppRoutingModule],
-      providers: [{provide: CountryService, useClass: MockCountryService}]
+      providers: [
+        {provide: CountryService, useClass: MockCountryService},
+        DatesConverterService,
+        CalculateAgeService
+      ]
     })
     .compileComponents();
     injector = getTestBed();
@@ -45,7 +56,7 @@ xdescribe('EmployeeFormComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(EmployeeFormComponent);
     component = fixture.componentInstance;
-    component.countries = {name: 'Affganistan'};
+    component.countries = [{name: 'Affganistan'}];
     fixture.detectChanges();
   });
 
