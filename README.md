@@ -10,6 +10,14 @@ This project uses [json-server](https://github.com/typicode/json-server), a full
 $ npm install -g json-server
 ```
 
+### Install dependencies
+
+Install the dependencies running:
+
+```bash
+$ npm install
+```
+
 
 ## Run project
 
