@@ -24,4 +24,17 @@ describe('JobTitleComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should set servicesJobTitles if current area is Services', () => {
+    component.currentArea = 'Services';
+    component.setDropDownOptions();
+    expect(component.dropDownOptions).toEqual(component.servicesJobTitles);
+  });
+
+  it('should set servicesJobTitles if current area is Services', () => {
+    component.currentArea = 'Kitchen';
+    component.setDropDownOptions();
+    expect(component.dropDownOptions).toEqual(component.kitchenJobTitles);
+  });
+
 });
