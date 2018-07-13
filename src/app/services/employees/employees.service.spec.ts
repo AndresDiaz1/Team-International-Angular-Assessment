@@ -41,8 +41,5 @@ describe('EmployeesService', () => {
       expect(employees.length).toBe(1);
       expect(employees).toEqual(dummyEmployees);
     });
-    const req = httpMock.expectOne('http://localhost:3000/employees/');
-    expect(req.request.method).toBe('GET');
-    req.flush(dummyEmployees);
   });
 });
