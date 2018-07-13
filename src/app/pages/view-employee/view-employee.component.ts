@@ -15,6 +15,7 @@ export class ViewEmployeeComponent implements OnInit {
 
   isViewMode: boolean = false;
   selectedEmployee: Employee;
+  employeeExists = true;
 
   constructor(private route: ActivatedRoute, private router: Router, private store: Store<fromStore.EmployeesState>, private employeesService: EmployeesService) { }
 
@@ -51,7 +52,13 @@ export class ViewEmployeeComponent implements OnInit {
 
   getSelectedEmployeeData(employees, employeeId) {
     const selectedEmployee = employees.find( employee => employee.id === employeeId);
-    this.selectedEmployee = selectedEmployee;
+    if (selectedEmployee) {
+      this.selectedEmployee = selectedEmployee;
+      this.employeeExists = true;
+    } else {
+      this.employeeExists = false;
+    }
+
   }
 
   handlePressedSave(employee) {
