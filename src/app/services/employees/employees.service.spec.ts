@@ -17,7 +17,7 @@ describe('EmployeesService', () => {
     'hireDate': '2017/10/01',
     'status': false,
     'area': 'services',
-    'jobTitle': 1,
+    'jobTitle': 'Waitress',
     'tipRate': 0
   }];
 

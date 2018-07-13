@@ -41,7 +41,7 @@ describe('EmployeesListComponent', () => {
           'hireDate': '2017/10/01',
           'status': false,
           'area': 'services',
-          'jobTitle': 1,
+          'jobTitle': 'Waitress',
           'tipRate': 0
         }
       ];
@@ -55,7 +55,7 @@ describe('EmployeesListComponent', () => {
       'hireDate': '2017/10/01',
       'status': false,
       'area': 'services',
-      'jobTitle': 1,
+      'jobTitle': 'Waitress',
       'tipRate': 0,
       'age': 40
     }]);
