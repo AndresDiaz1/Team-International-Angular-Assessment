@@ -76,4 +76,21 @@ describe('NewEmployeeComponent', () => {
     component.handleGoBack(false);
     expect(router.navigate).toHaveBeenCalled();
   });
+
+  it('should canDeactivate return true if form is not dirty', () => {
+    component.formIsDirty = false;
+    expect(component.canDeactivate()).toEqual(true);
+  });
+
+  it('should canDeactivate return true if form is dirty and user accepts leave page', () => {
+    spyOn(window, 'confirm').and.returnValue(true);
+    component.formIsDirty = true;
+    expect(component.canDeactivate()).toEqual(true);
+  });
+
+  it('should canDeactivate return false if form is dirty and user does not accept leave page', () => {
+    spyOn(window, 'confirm').and.returnValue(false);
+    component.formIsDirty = true;
+    expect(component.canDeactivate()).toEqual(false);
+  });
 });
