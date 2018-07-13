@@ -24,11 +24,23 @@ class MockCountryService {
   }
 }
 
-describe('EmployeeFormComponent', () => {
+fdescribe('EmployeeFormComponent', () => {
   let component: EmployeeFormComponent;
   let fixture: ComponentFixture<EmployeeFormComponent>;
   let injector: TestBed;
   let countryService: MockCountryService;
+  const stubEmploye = {
+    'id': 1,
+    'name': 'Valerie Liberty',
+    'dob': '1988/03/02',
+    'country': 'Australia',
+    'username': 'Val',
+    'hireDate': '2018/03/02',
+    'status': true,
+    'area': 'Services',
+    'jobTitle': 'Dining room manager',
+    'tipRate': 0.4
+  };
 
 
   beforeEach(async(() => {
@@ -69,4 +81,49 @@ describe('EmployeeFormComponent', () => {
     component.getCountries();
     expect(countryService.getCountries).toHaveBeenCalled();
   });
+
+  it('should fill form fills the form with selectedEmployeeData', () => {
+    component.selectedEmployeeData = stubEmploye;
+    component.fillForm();
+    expect(component.form.controls['name'].value).toEqual(stubEmploye.name);
+  });
+
+  it('should disableFields disable form fills', () => {
+    component.disableFields();
+    expect(component.form.controls['name'].disabled).toEqual(true);
+  });
+
+  it('should isFieldValid return false if field is valid, and has pressed SaveEmployee', () => {
+    component.form.controls['name'].setValue('Pepe');
+    component.hasPressedSaveEmployee = true;
+    expect(component.isFieldValid('name')).toEqual(false);
+  });
+
+  it('should isFieldValid return true if field is invalid, and has pressed SaveEmployee', () => {
+    component.hasPressedSaveEmployee = true;
+    expect(component.isFieldValid('name')).toEqual(true);
+  });
+
+  it('should isFieldValid return false if field is invalid, and has pressed SaveEmployee is false', () => {
+    component.hasPressedSaveEmployee = false;
+    expect(component.isFieldValid('name')).toEqual(false);
+  });
+
+  it('should isFieldValid return false if field is valid, and has pressed SaveEmployee is false', () => {
+    component.form.controls['name'].setValue('Pepe');
+    component.hasPressedSaveEmployee = false;
+    expect(component.isFieldValid('name')).toEqual(false);
+  });
+
+  it('should changeArea set current area equal to form area', () => {
+    component.form.controls['area'].setValue('Kitchen');
+    component.changeArea();
+    expect(component.currentArea).toEqual('Kitchen');
+  });
+
+  it('should handleJobTitleChange set jobTitle form field equal to passed parameter ', () => {
+    component.handleJobTitleChange('Waitres');
+    expect( component.form.controls['jobTitle'].value).toEqual('Waitres');
+  });
+
 });
