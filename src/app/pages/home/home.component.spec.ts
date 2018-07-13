@@ -10,19 +10,7 @@ import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-a
 import { MockComponent } from 'ng2-mock-component';
 import {Store} from '@ngrx/store';
 import {Router} from '@angular/router';
-import {MockEmployeesService} from '../../../mocks/mocks';
-
-class MockStore {
-  select() {
-    return Observable.of(
-      new Response(new ResponseOptions({body: JSON.stringify({})}))
-    );
-  }
-
-  dispatch() {
-    return false;
-  }
-}
+import {MockEmployeesService, MockStore} from '../../../mocks/mocks';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
