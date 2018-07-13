@@ -63,7 +63,6 @@ export class ViewEmployeeComponent implements OnInit {
 
   handlePressedSave(employee) {
     this.employeesService.updateEmployee(employee, this.selectedEmployee.id).subscribe(res => {
-      console.log('make update', res);
       this.router.navigate(['/', 'home']);
     }, err => {
       console.log('error updating employee', err);

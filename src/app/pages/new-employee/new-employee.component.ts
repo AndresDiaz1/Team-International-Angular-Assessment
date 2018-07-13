@@ -18,7 +18,6 @@ export class NewEmployeeComponent implements OnInit {
   saveNewEmployee(employee) {
     this.employeesService.addEmployee(employee).subscribe(res => {
       this.router.navigate(['/', 'home']);
-      console.log('agrego', res);
     }, err => {
       console.log('hubo error', err);
     });
