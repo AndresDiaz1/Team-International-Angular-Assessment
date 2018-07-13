@@ -37,7 +37,11 @@ export class EmployeeFormComponent implements OnInit, OnChanges {
     }
   }
 
-  ngOnChanges() {}
+  ngOnChanges() {
+    if (this.selectedEmployeeData && this.form) {
+      this.fillForm();
+    }
+  }
 
   createForm() {
     this.form = this.formBuilder.group({

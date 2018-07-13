@@ -19,6 +19,7 @@ export class ViewEmployeeComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private store: Store<fromStore.EmployeesState>, private employeesService: EmployeesService) { }
 
   ngOnInit() {
+    this.store.dispatch(new fromStore.LoadEmployees);
     this.getEmployeesData();
     this.getQueryParams();
   }
