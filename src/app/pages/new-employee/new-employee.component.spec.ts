@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import {async, ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
 
 import { NewEmployeeComponent } from './new-employee.component';
 import {EmployeeFormComponent} from '../../components/employee-form/employee-form.component';
@@ -13,25 +13,8 @@ import {CountryService} from '../../services/country/country.service';
 import {DatesConverterService} from '../../miscellaneous/dates-converter/dates-converter.service';
 import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
 import {MockComponent} from 'ng2-mock-component';
-
-class MockEmployeesService {
-  getEmployees() {
-    return Observable.of(
-      new Response(new ResponseOptions({body: JSON.stringify([{
-          'id': 1,
-          'name': 'Giacomo Guilizoni',
-          'dob': '1978/03/21',
-          'country': 'Italy',
-          'username': 'Peldi',
-          'hireDate': '2017/10/01',
-          'status': false,
-          'area': 'services',
-          'jobTitle': 1,
-          'tipRate': 0
-        }])}))
-    );
-  }
-}
+import {MockEmployeesService} from '../../../mocks/mocks';
+import {Router} from '@angular/router';
 
 class MockCountryService {
   getCountries() {
@@ -47,10 +30,13 @@ class MockCountryService {
 describe('NewEmployeeComponent', () => {
   let component: NewEmployeeComponent;
   let fixture: ComponentFixture<NewEmployeeComponent>;
+  let injector: TestBed;
+  let employeesService: MockEmployeesService;
+  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, MaterialModule, RouterTestingModule],
+      imports: [ReactiveFormsModule, MaterialModule, RouterTestingModule, RouterTestingModule],
       declarations: [
         NewEmployeeComponent,
         JobTitleComponent,
@@ -64,6 +50,9 @@ describe('NewEmployeeComponent', () => {
         ]
     })
     .compileComponents();
+    injector = getTestBed();
+    employeesService = injector.get(EmployeesService);
+    router = TestBed.get(Router);
   }));
 
   beforeEach(() => {
@@ -74,5 +63,17 @@ describe('NewEmployeeComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should saveNewEmployee call addEmployee from EmployeeService', () => {
+    spyOn(employeesService, 'addEmployee').and.callThrough();
+    component.saveNewEmployee([]);
+    expect(employeesService.addEmployee).toHaveBeenCalled();
+  });
+
+  it('should handleGoBack call route navigate', () => {
+    spyOn(router, 'navigate').and.returnValue('/home');
+    component.handleGoBack(false);
+    expect(router.navigate).toHaveBeenCalled();
   });
 });

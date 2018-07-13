@@ -10,18 +10,7 @@ import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-a
 import { MockComponent } from 'ng2-mock-component';
 import {Store} from '@ngrx/store';
 import {Router} from '@angular/router';
-
-
-
-
-class MockEmployeesService {
-  deleteEmployee(id: number) {
-    console.log('esta llamando aca el mock')
-    return Observable.of(
-      new Response(new ResponseOptions({body: JSON.stringify([{ok: 1}])}))
-    );
-  }
-}
+import {MockEmployeesService} from '../../../mocks/mocks';
 
 class MockStore {
   select() {
