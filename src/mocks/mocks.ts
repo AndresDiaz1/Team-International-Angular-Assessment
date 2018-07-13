@@ -28,6 +28,13 @@ export class MockEmployeesService {
     );
   }
 
+  updateEmployee(employee: Employee, id: number) {
+    console.log('esta tratando aca')
+    return Observable.of(
+      new Response(new ResponseOptions({body: JSON.stringify([{ok: 1}])}))
+    );
+  }
+
   deleteEmployee(id: number) {
     return Observable.of(
       new Response(new ResponseOptions({body: JSON.stringify([{ok: 1}])}))
