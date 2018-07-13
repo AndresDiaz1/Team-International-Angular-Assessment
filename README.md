@@ -32,7 +32,7 @@ $ json-server --watch employees.json
 
 ### Run angular project
 
-1. Run
+1. Run in other terminal
 ```bash
 $ ng s -o
 ```
