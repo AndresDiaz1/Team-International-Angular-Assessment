@@ -1,32 +1,24 @@
-import {async, ComponentFixture, getTestBed, TestBed} from '@angular/core/testing';
+import {async, ComponentFixture, fakeAsync, getTestBed, TestBed, tick} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomeComponent } from './home.component';
 import {EmployeesService} from '../../services/employees/employees.service';
 import {Observable} from 'rxjs/Observable';
 import {Response, ResponseOptions} from '@angular/http';
 import 'rxjs/add/observable/of';
-import {EmployeesListComponent} from '../../components/employees-list/employees-list.component';
 import {MaterialModule} from '../../material/material.module';
 import {CalculateAgeService} from '../../miscellaneous/calculate-age/calculate-age.service';
 import { MockComponent } from 'ng2-mock-component';
-import {StateObservable, Store} from '@ngrx/store';
+import {Store} from '@ngrx/store';
+import {Router} from '@angular/router';
+
+
 
 
 class MockEmployeesService {
-  getEmployees() {
+  deleteEmployee(id: number) {
+    console.log('esta llamando aca el mock')
     return Observable.of(
-      new Response(new ResponseOptions({body: JSON.stringify([{
-          'id': 1,
-          'name': 'Giacomo Guilizoni',
-          'dob': '1978/03/21',
-          'country': 'Italy',
-          'username': 'Peldi',
-          'hireDate': '2017/10/01',
-          'status': false,
-          'area': 'services',
-          'jobTitle': 1,
-          'tipRate': 0
-        }])}))
+      new Response(new ResponseOptions({body: JSON.stringify([{ok: 1}])}))
     );
   }
 }
@@ -48,25 +40,28 @@ describe('HomeComponent', () => {
   let fixture: ComponentFixture<HomeComponent>;
   let injector: TestBed;
   let employeesService: MockEmployeesService;
-  let store: MockStore
+  let store: MockStore;
+  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [RouterTestingModule, MaterialModule],
       declarations: [
         HomeComponent,
-        MockComponent({ selector: 'app-employees-list', inputs: ['employeesList'] })
+        MockComponent({ selector: 'app-employees-list', inputs: ['employeesList'] }),
+        MockComponent({selector: 'app-view-employee'}),
       ],
       providers: [
         {provide: EmployeesService, useClass: MockEmployeesService},
         CalculateAgeService,
-        {provide: Store, useClass: MockStore}
+        {provide: Store, useClass: MockStore},
       ]
     })
     .compileComponents();
     injector = getTestBed();
     employeesService = injector.get(EmployeesService);
     store = injector.get(Store);
+    router = TestBed.get(Router);
   }));
 
   beforeEach(() => {
@@ -84,4 +79,23 @@ describe('HomeComponent', () => {
     component.getEmployees();
     expect(store.select).toHaveBeenCalled();
   });
+
+  it('should handleEditEmployee redirect to some User', () => {
+    spyOn(router, 'navigate').and.returnValue('/someUser/1');
+    component.handleEditEmployee(1);
+    expect(router.navigate).toHaveBeenCalled();
+  });
+
+  it('should handleViewEmployee redirect to some User', () => {
+    spyOn(router, 'navigate').and.returnValue('/someUser/2');
+    component.handleEditEmployee(2);
+    expect(router.navigate).toHaveBeenCalled();
+  });
+
+  it('should handleDeleteEmployee call employee service delete employee', () => {
+    spyOn(employeesService, 'deleteEmployee').and.callThrough();
+    component.handleDeleteEmployee(2);
+    expect(employeesService.deleteEmployee).toHaveBeenCalled();
+  });
+
 });
