@@ -126,4 +126,65 @@ fdescribe('EmployeeFormComponent', () => {
     expect( component.form.controls['jobTitle'].value).toEqual('Waitres');
   });
 
+  it('should setTipRateVisibility return true if job title is Waitress or Dining room manager ', () => {
+    component.form.controls['jobTitle'].setValue('Waitress');
+    expect( component.setTipRateVisibility()).toEqual(true);
+    component.form.controls['jobTitle'].setValue('Dining room manager');
+    expect( component.setTipRateVisibility()).toEqual(true);
+  });
+
+  it('should setTipRateVisibility return false if job title is different than Waitress or Dining room manager ', () => {
+    component.form.controls['jobTitle'].setValue('Chef');
+    expect( component.setTipRateVisibility()).toEqual(false);
+  });
+
+  it('should isUnder18 return true if dob date is less than 18 years ago', () => {
+    component.form.controls['dob'].setValue(new Date());
+    expect( component.isUnder18()).toEqual(true);
+  });
+
+  it('should isUnder18 return false if dob date is greater than 18 years ago', () => {
+    component.form.controls['dob'].setValue(new Date(1990, 10, 12));
+    expect( component.isUnder18()).toEqual(false);
+  });
+
+  it('should isFormValid return true if form is valid and user has more than 18 year', () => {
+    component.form.controls['name'].setValue('test');
+    component.form.controls['dob'].setValue(new Date(1990, 12, 12));
+    component.form.controls['country'].setValue('Albania');
+    component.form.controls['userName'].setValue('test');
+    component.form.controls['hireDate'].setValue(new Date());
+    component.form.controls['status'].setValue(true);
+    component.form.controls['area'].setValue('Kitchen');
+    component.form.controls['jobTitle'].setValue('Waitress');
+    component.form.controls['tipRate'].setValue(0.23);
+    expect( component.isFormValid()).toEqual(true);
+  });
+
+  it('should isFormValid return false if form is invalid', () => {
+    component.form.controls['name'].setValue('test');
+    component.form.controls['dob'].setValue(new Date(1990, 12, 12));
+    component.form.controls['country'].setValue('Albania');
+    component.form.controls['userName'].setValue('test!#');
+    component.form.controls['hireDate'].setValue(new Date());
+    component.form.controls['status'].setValue(true);
+    component.form.controls['area'].setValue('Kitchen');
+    component.form.controls['jobTitle'].setValue('Waitress');
+    component.form.controls['tipRate'].setValue(0.23);
+    expect( component.isFormValid()).toEqual(false);
+  });
+
+  it('should isFormValid return false if user has less than 18 year', () => {
+    component.form.controls['name'].setValue('test');
+    component.form.controls['dob'].setValue(new Date());
+    component.form.controls['country'].setValue('Albania');
+    component.form.controls['userName'].setValue('test');
+    component.form.controls['hireDate'].setValue(new Date());
+    component.form.controls['status'].setValue(true);
+    component.form.controls['area'].setValue('Kitchen');
+    component.form.controls['jobTitle'].setValue('Waitress');
+    component.form.controls['tipRate'].setValue(0.23);
+    expect( component.isFormValid()).toEqual(false);
+  });
+
 });
