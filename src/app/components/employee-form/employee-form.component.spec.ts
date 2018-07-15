@@ -6,10 +6,7 @@ import {MaterialModule} from '../../material/material.module';
 import {AppRoutingModule} from '../../app.routing';
 import {HomeComponent} from '../../pages/home/home.component';
 import {EmployeesListComponent} from '../employees-list/employees-list.component';
-import {Observable} from 'rxjs/Observable';
-import {Response, ResponseOptions} from '@angular/http';
 import {CountryService} from '../../services/country/country.service';
-import {MockComponent} from 'ng2-mock-component';
 import {NewEmployeeComponent} from '../../pages/new-employee/new-employee.component';
 import {ViewEmployeeComponent} from '../../pages/view-employee/view-employee.component';
 import {JobTitleComponent} from '../job-title/job-title.component';
@@ -24,7 +21,7 @@ class MockCountryService {
   }
 }
 
-fdescribe('EmployeeFormComponent', () => {
+describe('EmployeeFormComponent', () => {
   let component: EmployeeFormComponent;
   let fixture: ComponentFixture<EmployeeFormComponent>;
   let injector: TestBed;
